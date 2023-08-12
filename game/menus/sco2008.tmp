@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4wwwldx2ovxm"]
+
+[ext_resource type="Script" path="res://game/menus/score.gd" id="1_74lly"]
+[ext_resource type="FontFile" uid="uid://bpp2xnkwyv8as" path="res://assets/fonts/joystix monospace.otf" id="1_qmq86"]
+
+[node name="Score" type="CanvasLayer"]
+script = ExtResource("1_74lly")
+
+[node name="ScoreText" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -23.0
+offset_top = 18.0
+offset_right = 23.0
+offset_bottom = 55.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_qmq86")
+theme_override_font_sizes/font_size = 28
+text = "12"

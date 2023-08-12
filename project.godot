@@ -17,6 +17,11 @@ boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
 config/icon="res://icon.svg"
 
+[autoload]
+
+GlobalValues="*res://game/globals/global_values.gd"
+Score="*res://game/menus/score.tscn"
+
 [display]
 
 window/size/viewport_width=270

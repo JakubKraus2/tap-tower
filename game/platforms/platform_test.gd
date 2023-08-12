@@ -37,3 +37,5 @@ func _on_player_checker_area_entered(area):
 	get_tree().root.call_deferred("add_child", platform_instance)
 	platform_instance.global_position.y = global_position.y - vertical_margin
 	area.get_parent().position.x = position.x
+	GlobalValues.score += 1
+	Score.gain_score()
