@@ -28,27 +28,27 @@ func jump():
 				LEFT: #player is on left
 					velocity.x = 0
 				MIDDLE: #player is on middle
-					velocity.x = -135
+					velocity.x = -190
 				RIGHT: #player is on right
-					velocity.x = -270
+					velocity.x = -392
 			current_side = LEFT
 			velocity.y = JUMP_FORCE
 		if Input.is_action_just_pressed("ui_down"): #user pressed middle side
 			match current_side:
 				LEFT: #player is on left
-					velocity.x = 135
+					velocity.x = 190
 				MIDDLE: #player is on middle
 					velocity.x = 0
 				RIGHT: #player is on right
-					velocity.x = -135
+					velocity.x = -190
 			current_side = MIDDLE
 			velocity.y = JUMP_FORCE
 		if Input.is_action_just_pressed("ui_right"): #user pressed right side
 			match current_side:
 				LEFT: #player is on left
-					velocity.x = 270
+					velocity.x = 392
 				MIDDLE: #player is on middle
-					velocity.x = 135
+					velocity.x = 190
 				RIGHT: #player is on right
 					velocity.x = 0
 			current_side = RIGHT

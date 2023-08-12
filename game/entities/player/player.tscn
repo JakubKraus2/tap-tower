@@ -4,19 +4,19 @@
 [ext_resource type="Script" path="res://game/entities/player/player.gd" id="1_u2w40"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e1pbj"]
-size = Vector2(22, 22)
+size = Vector2(24, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ox8ht"]
 size = Vector2(90, 720)
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 3
 script = ExtResource("1_u2w40")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_lm2ls")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("RectangleShape2D_e1pbj")
 
 [node name="Camera2D" type="Camera2D" parent="."]
