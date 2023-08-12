@@ -19,14 +19,3 @@ func _ready():
 #
 #	for point in queue:
 #		add_point(point)
-
-func _on_create_point_timer_timeout():
-	var pos = player.position
-	queue.push_front(pos)
-	
-	if queue.size() > max_lenght:
-		queue.pop_back()
-	clear_points()
-	
-	for point in queue:
-		add_point(point)
