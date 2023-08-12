@@ -14,6 +14,8 @@ var screen_shake = load("res://game/particles&effects/screen_shake.tscn")
 
 
 func _ready():
+	$Sprite2D.set_modulate(Color(randf_range(0.2, 1), randf_range(0.2, 1), randf_range(0.2, 1)))
+	$PointLight2D.set_modulate(Color(randf_range(0.2, 1), randf_range(0.2, 1), randf_range(0.2, 1)))
 	var new_random_side = sides.keys().pick_random()
 	match new_random_side:
 		"LEFT":
@@ -25,7 +27,8 @@ func _ready():
 
 
 func spawn_screen_shake():
-	get_tree().root.add_child(screen_shake.instantiate())
+	var screen_shake_instance = screen_shake.instantiate()
+	get_tree().root.add_child(screen_shake_instance)
 
 
 func _on_player_checker_area_entered(area):

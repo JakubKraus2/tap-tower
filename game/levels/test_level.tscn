@@ -1,21 +1,51 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwtrp2puptoe8"]
+[gd_scene load_steps=7 format=3 uid="uid://dwtrp2puptoe8"]
 
 [ext_resource type="PackedScene" uid="uid://cuytg4xm3oxvi" path="res://game/entities/player/player.tscn" id="1_7ya8w"]
+[ext_resource type="Texture2D" uid="uid://bnwdmq5wjt7h7" path="res://assets/platforms/platform_test.png" id="1_sto4m"]
 [ext_resource type="PackedScene" uid="uid://cncaajy6mw2xc" path="res://game/platforms/platform_test.tscn" id="2_atxi4"]
+[ext_resource type="PackedScene" uid="uid://bibyk4c1c1s3y" path="res://game/particles&effects/light_trail.tscn" id="4_hvp4j"]
+
+[sub_resource type="Environment" id="Environment_gw2l3"]
+background_mode = 3
+glow_enabled = true
+glow_levels/5 = 0.0
+glow_intensity = 8.0
+glow_strength = 2.0
+glow_hdr_threshold = 0.0
+glow_hdr_scale = 4.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7fgqy"]
 size = Vector2(700, 20)
 
 [node name="TestLevel" type="Node2D"]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gw2l3")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+self_modulate = Color(0, 0, 0, 0.901961)
+offset_left = -1170.0
+offset_top = -741.0
+offset_right = 1440.0
+offset_bottom = 1221.0
+size_flags_vertical = 4
+texture = ExtResource("1_sto4m")
+
+[node name="LightTrail" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_hvp4j")]
+max_lenght = 15
+player = NodePath("../Player")
+
 [node name="Player" parent="." instance=ExtResource("1_7ya8w")]
 position = Vector2(135, 468)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(159, 490)
-shape = SubResource("RectangleShape2D_7fgqy")
-
 [node name="PlatformTest" parent="." instance=ExtResource("2_atxi4")]
 position = Vector2(138, 390)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(159, 490)
+shape = SubResource("RectangleShape2D_7fgqy")

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bibyk4c1c1s3y"]
+
+[ext_resource type="Script" path="res://game/particles&effects/LightTrail.gd" id="1_hjper"]
+
+[sub_resource type="Curve" id="Curve_16f4w"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="LightTrail" type="Line2D"]
+width_curve = SubResource("Curve_16f4w")
+script = ExtResource("1_hjper")
+max_lenght = 20
