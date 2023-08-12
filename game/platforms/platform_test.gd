@@ -10,7 +10,7 @@ enum sides {
 var platform = load("res://game/platforms/platform_test.tscn")
 const horizontal_margin = 24
 const vertical_margin = 100
-
+var screen_shake = load("res://game/particles&effects/screen_shake.tscn")
 
 
 func _ready():
@@ -24,10 +24,13 @@ func _ready():
 			global_position.x = 270 - $Sprite2D.get_rect().size.x/2 - horizontal_margin
 
 
-func _on_player_checker_body_entered(body):
+func spawn_screen_shake():
+	get_tree().root.add_child(screen_shake.instantiate())
+
+
+func _on_player_checker_area_entered(area):
 	$PlayerChecker.set_deferred("monitoring", false)
 	var platform_instance = platform.instantiate()
 	get_tree().root.call_deferred("add_child", platform_instance)
 	platform_instance.global_position.y = global_position.y - vertical_margin
-	body.position.x = position.x
-#	queue_free()
+	area.get_parent().position.x = position.x
