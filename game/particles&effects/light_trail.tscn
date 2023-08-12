@@ -10,3 +10,9 @@ point_count = 2
 width_curve = SubResource("Curve_16f4w")
 script = ExtResource("1_hjper")
 max_lenght = 20
+
+[node name="CreatePointTimer" type="Timer" parent="."]
+wait_time = 0.05
+autostart = true
+
+[connection signal="timeout" from="CreatePointTimer" to="." method="_on_create_point_timer_timeout"]
