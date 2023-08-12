@@ -1,0 +1,130 @@
+[gd_scene load_steps=9 format=3 uid="uid://cncaajy6mw2xc"]
+
+[ext_resource type="Texture2D" uid="uid://bnwdmq5wjt7h7" path="res://assets/platforms/platform_test.png" id="1_7l0s6"]
+[ext_resource type="Script" path="res://game/platforms/platform_test.gd" id="1_8oao4"]
+[ext_resource type="Texture2D" uid="uid://o04as2qiohyb" path="res://assets/particles/light3.png" id="3_ymlxl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_utlx4"]
+size = Vector2(64, 7)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_dvvpw"]
+b = Vector2(60, 0)
+
+[sub_resource type="Animation" id="Animation_ka6mn"]
+resource_name = "despawn"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_2l4d3"]
+resource_name = "spawn"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["despawn", -1, 1.0, false],
+"method": &"play"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawn_screen_shake"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i51s3"]
+_data = {
+"despawn": SubResource("Animation_ka6mn"),
+"spawn": SubResource("Animation_2l4d3")
+}
+
+[node name="PlatformTest" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_8oao4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7l0s6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_utlx4")
+one_way_collision = true
+
+[node name="PointLight2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(0.265625, 0.0703125)
+texture = ExtResource("3_ymlxl")
+
+[node name="PlayerChecker" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerChecker"]
+position = Vector2(-30, -5)
+shape = SubResource("SegmentShape2D_dvvpw")
+
+[node name="Light" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.117647)
+scale = Vector2(0.328125, 0.199219)
+texture = ExtResource("3_ymlxl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "spawn"
+libraries = {
+"": SubResource("AnimationLibrary_i51s3")
+}
+
+[connection signal="area_entered" from="PlayerChecker" to="." method="_on_player_checker_area_entered"]

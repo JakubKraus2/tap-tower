@@ -11,8 +11,16 @@ config_version=5
 [application]
 
 config/name="Tap Tower"
+run/main_scene="res://game/levels/test_level.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
 config/icon="res://icon.svg"
+
+[autoload]
+
+GlobalValues="*res://game/globals/global_values.gd"
+Score="*res://game/menus/score.tscn"
 
 [display]
 
@@ -20,7 +28,14 @@ window/size/viewport_width=270
 window/size/viewport_height=480
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+window/handheld/orientation=1
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
