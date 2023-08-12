@@ -22,7 +22,6 @@ func _ready():
 			global_position.x = 135
 		"RIGHT":
 			global_position.x = 270 - $Sprite2D.get_rect().size.x/2 - horizontal_margin
-	print(new_random_side)
 
 
 func _on_player_checker_body_entered(body):

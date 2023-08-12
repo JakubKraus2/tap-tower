@@ -28,7 +28,6 @@ position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 
 [node name="Buttons" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="LeftButton" type="TouchScreenButton" parent="Buttons"]
 position = Vector2(45, 240)
