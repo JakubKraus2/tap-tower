@@ -1,3 +1,16 @@
-[gd_scene format=3 uid="uid://dwtrp2puptoe8"]
+[gd_scene load_steps=3 format=3 uid="uid://dwtrp2puptoe8"]
+
+[ext_resource type="PackedScene" uid="uid://cuytg4xm3oxvi" path="res://game/entities/player/player.tscn" id="1_7ya8w"]
+[ext_resource type="PackedScene" uid="uid://cncaajy6mw2xc" path="res://game/platforms/platform_test.tscn" id="2_atxi4"]
 
 [node name="TestLevel" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_7ya8w")]
+position = Vector2(135, 420)
+
+[node name="PlatformTest" parent="." instance=ExtResource("2_atxi4")]
+position = Vector2(135, 461)
+scale = Vector2(6.30548, 1.51751)
+
+[node name="PlatformTest2" parent="." instance=ExtResource("2_atxi4")]
+position = Vector2(138, 348)
