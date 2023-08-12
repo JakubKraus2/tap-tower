@@ -2,7 +2,7 @@ extends Node
 
 
 
-var shake_power = 1.0
+var shake_power = 2.0
 
 
 

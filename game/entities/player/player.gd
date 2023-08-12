@@ -20,9 +20,11 @@ func _physics_process(delta):
 	if !is_on_floor():
 		velocity.y += GRAVITY * delta
 		$PlatformSpawner/CollisionShape2D.disabled = true
+		$Buttons.visible = false
 	if velocity.y == 0 && is_on_floor():
 		velocity.x = 0
 		$PlatformSpawner/CollisionShape2D.disabled = false
+		$Buttons.visible = true
 	jump_computer()
 	move_and_slide()
 

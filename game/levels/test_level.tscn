@@ -23,6 +23,7 @@ size_flags_vertical = 4
 texture = ExtResource("1_sto4m")
 
 [node name="LightTrail" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_hvp4j")]
+points = PackedVector2Array(-1340, 30)
 max_lenght = 15
 player = NodePath("../Player")
 
