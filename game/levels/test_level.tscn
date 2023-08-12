@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwtrp2puptoe8"]
+[gd_scene load_steps=7 format=3 uid="uid://dwtrp2puptoe8"]
 
 [ext_resource type="PackedScene" uid="uid://cuytg4xm3oxvi" path="res://game/entities/player/player.tscn" id="1_7ya8w"]
 [ext_resource type="Texture2D" uid="uid://bnwdmq5wjt7h7" path="res://assets/platforms/platform_test.png" id="1_sto4m"]
 [ext_resource type="PackedScene" uid="uid://cncaajy6mw2xc" path="res://game/platforms/platform_test.tscn" id="2_atxi4"]
 [ext_resource type="PackedScene" uid="uid://bibyk4c1c1s3y" path="res://game/particles&effects/light_trail.tscn" id="4_hvp4j"]
+[ext_resource type="PackedScene" uid="uid://b3vfo1bq40mgg" path="res://game/menus/start_menu.tscn" id="5_famwe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7fgqy"]
 size = Vector2(700, 20)
@@ -23,7 +24,6 @@ size_flags_vertical = 4
 texture = ExtResource("1_sto4m")
 
 [node name="LightTrail" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_hvp4j")]
-points = PackedVector2Array(-1340, 30)
 max_lenght = 15
 player = NodePath("../Player")
 
@@ -31,6 +31,7 @@ player = NodePath("../Player")
 position = Vector2(135, 468)
 
 [node name="PlatformTest" parent="." instance=ExtResource("2_atxi4")]
+process_mode = 4
 position = Vector2(138, 390)
 
 [node name="Floor" type="StaticBody2D" parent="."]
@@ -38,3 +39,5 @@ position = Vector2(138, 390)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 position = Vector2(159, 490)
 shape = SubResource("RectangleShape2D_7fgqy")
+
+[node name="StartMenu" parent="." instance=ExtResource("5_famwe")]
