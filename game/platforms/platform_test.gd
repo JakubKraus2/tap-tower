@@ -39,3 +39,4 @@ func _on_player_checker_area_entered(area):
 	area.get_parent().position.x = position.x
 	GlobalValues.score += 1
 	Score.gain_score()
+	GlobalValues.highest_position = global_position.y if GlobalValues.highest_position > global_position.y else GlobalValues.highest_position
