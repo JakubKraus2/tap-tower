@@ -1,0 +1,98 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4yp1luvo7msb"]
+
+[ext_resource type="Script" path="res://game/menus/game_over_menu.gd" id="1_rmj7s"]
+[ext_resource type="Texture2D" uid="uid://2syjwpxsvfus" path="res://assets/menus/gameovermenu/border.png" id="1_xo5tn"]
+[ext_resource type="FontFile" uid="uid://bpp2xnkwyv8as" path="res://assets/fonts/joystix monospace.otf" id="2_rspcg"]
+[ext_resource type="Texture2D" uid="uid://dov7vvesy8dg0" path="res://assets/menus/gameovermenu/restart_button.png" id="3_71thn"]
+[ext_resource type="Texture2D" uid="uid://bqv2ytxu3w3g8" path="res://assets/menus/gameovermenu/quit_button.png" id="4_bs5i4"]
+
+[node name="GameOverMenu" type="CanvasLayer"]
+script = ExtResource("1_rmj7s")
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(0.756863, 0.639216, 0, 0.588235)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -103.5
+offset_top = -103.0
+offset_right = 103.5
+offset_bottom = -66.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 2.5)
+theme_override_colors/font_shadow_color = Color(0.505882, 0.317647, 0.152941, 1)
+theme_override_colors/font_outline_color = Color(0.388235, 0.356863, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("2_rspcg")
+theme_override_font_sizes/font_size = 28
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="Border" type="NinePatchRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.0
+offset_top = -10.0
+offset_right = 115.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_xo5tn")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Border"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 12.0
+offset_right = 206.0
+offset_bottom = 118.0
+theme_override_constants/separation = 41
+
+[node name="ScoreContainer" type="VBoxContainer" parent="Border/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 34
+
+[node name="Score" type="Label" parent="Border/HBoxContainer/ScoreContainer"]
+custom_minimum_size = Vector2(100, 36)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_rspcg")
+theme_override_font_sizes/font_size = 12
+text = "score
+10"
+vertical_alignment = 1
+
+[node name="HighScore" type="Label" parent="Border/HBoxContainer/ScoreContainer"]
+custom_minimum_size = Vector2(100, 36)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_rspcg")
+theme_override_font_sizes/font_size = 12
+text = "High Score
+12"
+vertical_alignment = 1
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="Border/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="RestartButton" type="TextureButton" parent="Border/HBoxContainer/ButtonsContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_71thn")
+
+[node name="QuitButton" type="TextureButton" parent="Border/HBoxContainer/ButtonsContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_bs5i4")
+
+[connection signal="pressed" from="Border/HBoxContainer/ButtonsContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Border/HBoxContainer/ButtonsContainer/QuitButton" to="." method="_on_quit_button_pressed"]
