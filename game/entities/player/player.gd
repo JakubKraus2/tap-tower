@@ -25,20 +25,8 @@ func _physics_process(delta):
 		velocity.x = 0
 		$PlatformSpawner/CollisionShape2D.disabled = false
 		$Buttons.visible = true
-	jump_computer()
 	move_and_slide()
 
-
-func jump_computer():
-	if Input.is_action_just_pressed("ui_left"): #user pressed left side
-		jump(0, -190, -392)
-		current_side = LEFT
-	if Input.is_action_just_pressed("ui_down"): #user pressed middle side
-		jump(190, 0, -190)
-		current_side = MIDDLE
-	if Input.is_action_just_pressed("ui_right"): #user pressed right side
-		jump(392, 190, 0)
-		current_side = RIGHT
 
 func jump(left_jump_force, middle_jump_force, right_jump_force):
 	if is_on_floor():

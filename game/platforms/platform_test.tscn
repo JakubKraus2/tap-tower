@@ -117,7 +117,7 @@ position = Vector2(-30, -5)
 shape = SubResource("SegmentShape2D_dvvpw")
 
 [node name="Light" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 1, 0.117647)
+self_modulate = Color(1, 1, 1, 0.235294)
 scale = Vector2(0.328125, 0.199219)
 texture = ExtResource("3_ymlxl")
 
