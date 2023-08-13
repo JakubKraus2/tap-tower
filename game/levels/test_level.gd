@@ -14,6 +14,8 @@ func _process(delta):
 	if $Player.global_position.y > GlobalValues.highest_position + 77:
 		var game_over_menu_instance = game_over_menu.instantiate()
 		add_child(game_over_menu_instance)
+		$Player.set_physics_process(false)
+		set_process(false)
 
 
 func _on_platform_test_tree_exited():
