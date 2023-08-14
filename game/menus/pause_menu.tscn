@@ -1,15 +1,63 @@
-[gd_scene load_steps=4 format=3 uid="uid://ci2o2k7kweev6"]
+[gd_scene load_steps=7 format=3 uid="uid://ci2o2k7kweev6"]
 
 [ext_resource type="Texture2D" uid="uid://c57w1yed8pb5y" path="res://assets/menus/pausemenu/pause_button.png" id="1_f3hvl"]
 [ext_resource type="Script" path="res://game/menus/pause_menu.gd" id="1_k82v0"]
 [ext_resource type="Texture2D" uid="uid://t2nhrwxjt1w0" path="res://assets/menus/pausemenu/pause_symbol.png" id="2_drc5k"]
+[ext_resource type="FontFile" uid="uid://bpp2xnkwyv8as" path="res://assets/fonts/joystix monospace.otf" id="4_v3yvx"]
+
+[sub_resource type="Animation" id="Animation_cm5is"]
+resource_name = "countdown"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CountDown:theme_override_font_sizes/font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5, 0.9, 1, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [72, 88, 72, 88, 72, 88]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CountDown:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5, 0.9, 1, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["3", "3", "2
+", "2
+", "1", "1"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CountDown:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7mosq"]
+_data = {
+"countdown": SubResource("Animation_cm5is")
+}
 
 [node name="PauseMenu" type="CanvasLayer"]
-process_mode = 3
-visible = false
+process_mode = 2
 script = ExtResource("1_k82v0")
 
 [node name="PauseButton" type="TextureButton" parent="."]
+process_mode = 3
 offset_left = 14.0
 offset_top = 14.0
 offset_right = 42.0
@@ -17,7 +65,6 @@ offset_bottom = 42.0
 texture_normal = ExtResource("1_f3hvl")
 
 [node name="PauseSymbol" type="TextureRect" parent="."]
-visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 anchors_preset = 8
 anchor_left = 0.5
@@ -31,5 +78,29 @@ offset_bottom = 94.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_drc5k")
+
+[node name="CountDown" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = -78.0
+offset_right = 78.0
+offset_bottom = 78.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_v3yvx")
+theme_override_font_sizes/font_size = 88
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7mosq")
+}
 
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
