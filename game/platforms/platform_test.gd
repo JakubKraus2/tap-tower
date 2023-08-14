@@ -14,6 +14,8 @@ var screen_shake = load("res://game/particles&effects/screen_shake.tscn")
 
 
 func _ready():
+	$AnimationPlayer.speed_scale = 1 + (GlobalValues.score/50)
+	clampf($AnimationPlayer.speed_scale, 1.0, 3.0)
 	$Sprite2D.set_modulate(Color(randf_range(0.2, 1), randf_range(0.2, 1), randf_range(0.2, 1)))
 	$PointLight2D.set_modulate(Color(randf_range(0.2, 1), randf_range(0.2, 1), randf_range(0.2, 1)))
 	var new_random_side = sides.keys().pick_random()
@@ -39,3 +41,4 @@ func _on_player_checker_area_entered(area):
 	area.get_parent().position.x = position.x
 	GlobalValues.score += 1
 	Score.gain_score()
+	GlobalValues.highest_position = global_position.y if GlobalValues.highest_position > global_position.y else GlobalValues.highest_position

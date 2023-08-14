@@ -39,7 +39,7 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_ol77a")
 
 [node name="Light" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 1, 0.156863)
+self_modulate = Color(1, 1, 1, 0.313726)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_du0g1")
 

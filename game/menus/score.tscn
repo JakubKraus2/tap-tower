@@ -5,6 +5,7 @@
 
 [node name="Score" type="CanvasLayer"]
 layer = -1
+visible = false
 script = ExtResource("1_74lly")
 
 [node name="ScoreText" type="Label" parent="."]

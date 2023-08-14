@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwtrp2puptoe8"]
+[gd_scene load_steps=8 format=3 uid="uid://dwtrp2puptoe8"]
 
 [ext_resource type="PackedScene" uid="uid://cuytg4xm3oxvi" path="res://game/entities/player/player.tscn" id="1_7ya8w"]
 [ext_resource type="Texture2D" uid="uid://bnwdmq5wjt7h7" path="res://assets/platforms/platform_test.png" id="1_sto4m"]
+[ext_resource type="Script" path="res://game/levels/test_level.gd" id="1_xnn8j"]
 [ext_resource type="PackedScene" uid="uid://cncaajy6mw2xc" path="res://game/platforms/platform_test.tscn" id="2_atxi4"]
 [ext_resource type="PackedScene" uid="uid://bibyk4c1c1s3y" path="res://game/particles&effects/light_trail.tscn" id="4_hvp4j"]
 [ext_resource type="PackedScene" uid="uid://b3vfo1bq40mgg" path="res://game/menus/start_menu.tscn" id="5_famwe"]
@@ -10,6 +11,7 @@
 size = Vector2(700, 20)
 
 [node name="TestLevel" type="Node2D"]
+script = ExtResource("1_xnn8j")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -2
@@ -28,7 +30,7 @@ max_lenght = 15
 player = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("1_7ya8w")]
-position = Vector2(135, 468)
+position = Vector2(135, 480)
 
 [node name="PlatformTest" parent="." instance=ExtResource("2_atxi4")]
 process_mode = 4
@@ -41,3 +43,5 @@ position = Vector2(159, 490)
 shape = SubResource("RectangleShape2D_7fgqy")
 
 [node name="StartMenu" parent="." instance=ExtResource("5_famwe")]
+
+[connection signal="tree_exited" from="PlatformTest" to="." method="_on_platform_test_tree_exited"]
