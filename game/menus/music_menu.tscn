@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxer4jrby3lc3"]
+
+[ext_resource type="Texture2D" uid="uid://byjrpx2ypfgnw" path="res://assets/menus/pausemenu/sound_button.png" id="1_7uwd2"]
+[ext_resource type="Texture2D" uid="uid://bhubjyrgj73nh" path="res://assets/menus/pausemenu/sound_button_disabled.png" id="2_23gnc"]
+
+[sub_resource type="GDScript" id="GDScript_p5d6o"]
+script/source = "extends CanvasLayer
+
+
+
+func _ready():
+	$MusicButton.button_pressed = SaveHandler.data.sound
+
+func _on_music_button_toggled(button_pressed):
+	AudioServer.set_bus_mute(0, button_pressed)
+	SaveHandler.data.sound = button_pressed
+	SaveHandler.save_data()
+"
+
+[node name="MusicMenu" type="CanvasLayer"]
+script = SubResource("GDScript_p5d6o")
+
+[node name="MusicButton" type="TextureButton" parent="."]
+process_mode = 3
+offset_left = 16.0
+offset_top = 48.0
+offset_right = 44.0
+offset_bottom = 76.0
+toggle_mode = true
+texture_normal = ExtResource("1_7uwd2")
+texture_pressed = ExtResource("2_23gnc")
+
+[connection signal="toggled" from="MusicButton" to="." method="_on_music_button_toggled"]
