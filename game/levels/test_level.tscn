@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwtrp2puptoe8"]
+[gd_scene load_steps=9 format=3 uid="uid://dwtrp2puptoe8"]
 
 [ext_resource type="PackedScene" uid="uid://cuytg4xm3oxvi" path="res://game/entities/player/player.tscn" id="1_7ya8w"]
 [ext_resource type="Texture2D" uid="uid://bnwdmq5wjt7h7" path="res://assets/platforms/platform_test.png" id="1_sto4m"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cncaajy6mw2xc" path="res://game/platforms/platform_test.tscn" id="2_atxi4"]
 [ext_resource type="PackedScene" uid="uid://bibyk4c1c1s3y" path="res://game/particles&effects/light_trail.tscn" id="4_hvp4j"]
 [ext_resource type="PackedScene" uid="uid://b3vfo1bq40mgg" path="res://game/menus/start_menu.tscn" id="5_famwe"]
+[ext_resource type="AudioStream" uid="uid://d3omiejdnnyqs" path="res://audio/main_song.mp3" id="7_tl5ui"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7fgqy"]
 size = Vector2(700, 20)
@@ -43,5 +44,10 @@ position = Vector2(159, 490)
 shape = SubResource("RectangleShape2D_7fgqy")
 
 [node name="StartMenu" parent="." instance=ExtResource("5_famwe")]
+
+[node name="MainAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_tl5ui")
+volume_db = -10.0
+autoplay = true
 
 [connection signal="tree_exited" from="PlatformTest" to="." method="_on_platform_test_tree_exited"]

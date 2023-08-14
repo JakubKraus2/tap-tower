@@ -7,6 +7,7 @@ func _ready():
 	$Border/HBoxContainer/ScoreContainer/Score.text = "Score \n" + str(GlobalValues.score)
 	$Border/HBoxContainer/ScoreContainer/HighScore.text = "High Score \n" +  str(GlobalValues.high_score)
 	Score.visible = false
+	$GameOverAudio.play()
 
 
 func _on_restart_button_pressed():

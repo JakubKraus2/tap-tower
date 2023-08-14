@@ -30,6 +30,7 @@ func game_over():
 	for i in $Player.get_node("Buttons").get_children():
 		i.visible = false
 	set_process(false)
+	$MainAudio.stop()
 
 func compare_score():
 	if GlobalValues.score > GlobalValues.high_score:

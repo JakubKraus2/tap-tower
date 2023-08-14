@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cncaajy6mw2xc"]
+[gd_scene load_steps=10 format=3 uid="uid://cncaajy6mw2xc"]
 
 [ext_resource type="Texture2D" uid="uid://bnwdmq5wjt7h7" path="res://assets/platforms/platform_test.png" id="1_7l0s6"]
 [ext_resource type="Script" path="res://game/platforms/platform_test.gd" id="1_8oao4"]
 [ext_resource type="Texture2D" uid="uid://o04as2qiohyb" path="res://assets/particles/light3.png" id="3_ymlxl"]
+[ext_resource type="AudioStream" uid="uid://dyr37en6f3s1q" path="res://audio/jump.mp3" id="4_6scvj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_utlx4"]
 size = Vector2(64, 7)
@@ -126,5 +127,8 @@ autoplay = "spawn"
 libraries = {
 "": SubResource("AnimationLibrary_i51s3")
 }
+
+[node name="JumpAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_6scvj")
 
 [connection signal="area_entered" from="PlayerChecker" to="." method="_on_player_checker_area_entered"]
