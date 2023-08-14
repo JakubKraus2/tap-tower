@@ -33,3 +33,4 @@ func game_over():
 func compare_score():
 	if GlobalValues.score > GlobalValues.high_score:
 		GlobalValues.high_score = GlobalValues.score
+		SaveHandler.save_data()
