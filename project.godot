@@ -15,6 +15,8 @@ run/main_scene="res://game/levels/test_level.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
+boot_splash/fullsize=false
+boot_splash/use_filter=false
 config/icon="res://icon.svg"
 
 [autoload]
@@ -23,6 +25,7 @@ GlobalValues="*res://game/globals/global_values.gd"
 Score="*res://game/menus/score.tscn"
 PseudoLoading="*res://game/menus/pseudo_loading.tscn"
 SaveHandler="*res://game/globals/save_handler.gd"
+PauseMenu="*res://game/menus/pause_menu.tscn"
 
 [display]
 

@@ -26,6 +26,7 @@ func _on_platform_test_tree_exited():
 func game_over():
 	var game_over_menu_instance = game_over_menu.instantiate()
 	add_child(game_over_menu_instance)
+	PauseMenu.visible = false
 	for i in $Player.get_node("Buttons").get_children():
 		i.visible = false
 	set_process(false)
