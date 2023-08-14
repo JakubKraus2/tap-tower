@@ -10,6 +10,8 @@ func _ready():
 
 
 func _on_restart_button_pressed():
+	PseudoLoading.loading()
+	await get_tree().create_timer(0.3).timeout
 	get_tree().reload_current_scene()
 
 func _on_quit_button_pressed():

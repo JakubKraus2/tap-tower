@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 
 GlobalValues="*res://game/globals/global_values.gd"
 Score="*res://game/menus/score.tscn"
+PseudoLoading="*res://game/menus/pseudo_loading.tscn"
 
 [display]
 
