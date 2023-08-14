@@ -46,17 +46,17 @@ texture = ExtResource("3_du0g1")
 [node name="Buttons" type="CanvasLayer" parent="."]
 
 [node name="LeftButton" type="TouchScreenButton" parent="Buttons"]
-position = Vector2(45, 240)
+position = Vector2(45, 404)
 shape = SubResource("RectangleShape2D_ox8ht")
 shape_visible = false
 
 [node name="MiddleButton" type="TouchScreenButton" parent="Buttons"]
-position = Vector2(135, 240)
+position = Vector2(135, 404)
 shape = SubResource("RectangleShape2D_ox8ht")
 shape_visible = false
 
 [node name="RightButton" type="TouchScreenButton" parent="Buttons"]
-position = Vector2(225, 240)
+position = Vector2(225, 404)
 shape = SubResource("RectangleShape2D_ox8ht")
 shape_visible = false
 

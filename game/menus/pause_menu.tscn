@@ -58,10 +58,10 @@ script = ExtResource("1_k82v0")
 
 [node name="PauseButton" type="TextureButton" parent="."]
 process_mode = 3
-offset_left = 14.0
-offset_top = 14.0
-offset_right = 42.0
-offset_bottom = 42.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 44.0
+offset_bottom = 44.0
 texture_normal = ExtResource("1_f3hvl")
 
 [node name="PauseSymbol" type="TextureRect" parent="."]
