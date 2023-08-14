@@ -14,8 +14,8 @@ var screen_shake = load("res://game/particles&effects/screen_shake.tscn")
 
 
 func _ready():
-	$AnimationPlayer.speed_scale = 1 + (GlobalValues.score/50)
-	clampf($AnimationPlayer.speed_scale, 1.0, 3.0)
+	$AnimationPlayer.set_speed_scale(1.0 + (GlobalValues.score*0.02))
+	clampf($AnimationPlayer.speed_scale, 1.0, 2.0)
 	$Sprite2D.set_modulate(Color(randf_range(0.2, 1), randf_range(0.2, 1), randf_range(0.2, 1)))
 	$PointLight2D.set_modulate(Color(randf_range(0.2, 1), randf_range(0.2, 1), randf_range(0.2, 1)))
 	var new_random_side = sides.keys().pick_random()
