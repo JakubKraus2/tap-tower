@@ -9,11 +9,11 @@ func _ready():
 	$CountDown.visible = false
 
 func _input(event):
-	if event.is_pressed():
-		$PauseButton.visible = true
+	if event.is_pressed() && !$AnimationPlayer.is_playing():
 		$PauseSymbol.visible = false
 		$AnimationPlayer.play("countdown")
 		await $AnimationPlayer.animation_finished
+		$PauseButton.visible = true
 		get_tree().paused = false
 
 
